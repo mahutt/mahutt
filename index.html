@@ -4,17 +4,22 @@
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="/vite.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="/src/style.css" rel="stylesheet" />
     <title>mahutt</title>
   </head>
   <body>
-    <div id="app">
-      <div class="info-container">
-        <p>Software developer based in Montreal,&nbsp;Canada.</p>
+    <div class="w-full h-dvh flex flex-col justify-end items-center">
+      <div
+        class="w-full flex-1 p-4 flex flex-row justify-end items-start gap-4 text-xl"
+      >
+        <p class="text-right">
+          Software developer based in Montreal,&nbsp;Canada.
+        </p>
       </div>
-      <div class="first-name-container">
-        <img id="first-name" src="thomas.svg" alt="Thomas" />
+      <div class="flex flex-row justify-start items-center gap-4 w-full px-4">
+        <img class="h-[50px]" src="thomas.svg" alt="Thomas" />
       </div>
-      <img id="last-name" src="mahut.svg" alt="Mahut" />
+      <img class="p-4 w-screen object-fill block" src="mahut.svg" alt="Mahut" />
     </div>
     <script type="module" src="/src/main.ts"></script>
   </body>
