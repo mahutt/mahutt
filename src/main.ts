@@ -1,3 +1,6 @@
+import startGame from './game'
+
+// Creating links dynamically to avoid scraping by bots
 const LINKS = [
   { url: 'https://github.com/mahutt', icon: 'github' },
   { url: 'http://linkedin.com/in/mahutt', icon: 'linkedin' },
@@ -26,3 +29,5 @@ if (linksContainer) {
     linksContainer.appendChild(a)
   }
 }
+
+startGame()
