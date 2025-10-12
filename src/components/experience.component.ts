@@ -16,7 +16,7 @@ class ExperienceItem extends HTMLElement {
     this.innerHTML = `
       <a href="${link}" target="_blank" rel="noopener noreferrer" class="flex flex-col-reverse sm:flex-row flex-wrap justify-between items-start sm:items-center pb-9">
         <div>
-            <div class="w-fit pb-[3px]">
+            <div class="w-fit pt-[4px] pb-[3px]">
               <h2 class="text-2xl font-semibold tracking-tight leading-[22px]">${title}</h2>
               <span class="fluid-underline h-[2px] w-full block bg-zinc-800" />
             </div>
