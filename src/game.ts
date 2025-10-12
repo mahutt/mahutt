@@ -25,9 +25,21 @@ const spawn = () => {
     splash.style.left = `${rect.x + rect.width / 2}px`
     splash.style.top = `${rect.y + rect.height / 2}px`
     splash.style.width = '120px'
+    splash.classList.add('opacity-100', 'transition-opacity', 'duration-1000')
 
     const rotation = Math.random() * 360
     splash.style.transform = `translate(-50%, -50%) rotate(${rotation}deg)`
+
+    // Let splash fade away after 10 seconds
+    setTimeout(() => {
+      splash.classList.remove('opacity-100')
+      splash.classList.add('opacity-0')
+      setTimeout(() => {
+        if (splash.parentElement) {
+          splash.parentElement.removeChild(splash)
+        }
+      }, 1000)
+    }, 10000)
 
     document.body.removeChild(div)
     document.body.appendChild(splash)
