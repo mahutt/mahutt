@@ -32,6 +32,27 @@ export function openWorks(bubble: HTMLDivElement, scale: number) {
     }
   )
     .fromTo(
+      ':root',
+      {
+        backgroundColor: '#27272a',
+      },
+      {
+        backgroundColor: '#ffffff',
+        duration: 0.2,
+      }
+    )
+    .fromTo(
+      'body',
+      {
+        backgroundColor: '',
+      },
+      {
+        backgroundColor: '#ffffff',
+        duration: 0.2,
+      },
+      '<'
+    )
+    .fromTo(
       '#work',
       {
         display: 'none',
@@ -39,7 +60,8 @@ export function openWorks(bubble: HTMLDivElement, scale: number) {
       {
         display: 'block',
         duration: 0,
-      }
+      },
+      '<'
     )
     .fromTo(
       '#work-title span',
@@ -52,7 +74,8 @@ export function openWorks(bubble: HTMLDivElement, scale: number) {
         autoAlpha: 1,
         duration: 0.2,
         stagger: 0.1,
-      }
+      },
+      '<'
     )
   tl.fromTo(
     '.experience',

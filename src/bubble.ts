@@ -6,24 +6,26 @@ const spawn = (): HTMLDivElement => {
   div.style.width = '80px'
   div.style.height = '80px'
   div.classList.add('rounded-full', 'bg-white', 'fixed', 'z-10')
-  div.style.left = `${Math.random() * (window.innerWidth - 80)}px`
 
   div.onmousedown = () => {
     const rect = div.getBoundingClientRect()
-    div.style.top = `${rect.top}px`
 
     const oldRadius = rect.width / 2
     const distToLeft = rect.left + oldRadius
-    const distToRight = window.innerWidth - rect.right + oldRadius
+
+    /* We use screen.width and screen.height so that we guarantee to cover the screen on mobile (in case the viewport shrinks). */
+    const distToRight = window.screen.width - rect.right + oldRadius
     const distToTop = rect.top + oldRadius
-    const distToBottom = window.innerHeight - rect.bottom + oldRadius
+    const distToBottom = window.screen.height - rect.bottom + oldRadius
 
     const maxHorizontal = Math.max(distToLeft, distToRight)
     const maxVertical = Math.max(distToTop, distToBottom)
     const distToCorner = Math.sqrt(
       maxHorizontal * maxHorizontal + maxVertical * maxVertical
     )
-    const newRadius = distToCorner
+
+    const BUFFER = 20 // To make sure we cover the whole screen
+    const newRadius = distToCorner + BUFFER
     const scale = newRadius / oldRadius
 
     openWorks(div, scale)
