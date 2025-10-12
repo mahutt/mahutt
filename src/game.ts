@@ -1,5 +1,9 @@
 const SPAWN_INTERVAL = 4000
 
+// Preload the splash image
+const splashImage = new Image()
+splashImage.src = '/splash.svg'
+
 let lastSpawn = 0
 
 const spawn = () => {
