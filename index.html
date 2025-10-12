@@ -47,77 +47,31 @@
           <span>experiences /</span>
           <span>projects</span>
         </h1>
-        <div class="flex flex-col gap-8">
-          <div
-            class="experience flex flex-col-reverse sm:flex-row flex-wrap justify-between items-start sm:items-center"
-          >
-            <div>
-              <a
-                href="https://jesuisdesole.com"
-                target="_blank"
-                rel="noopener noreferrer"
-                class="hover:underline"
-              >
-                <h2 class="text-2xl font-semibold tracking-tight">
-                  Désolé Collective
-                </h2>
-              </a>
-              <p class="text-gray-600">
-                Freelance Designer & Full-Stack Developer
-              </p>
-            </div>
-            <p class="text-gray-500 text-sm">Ongoing</p>
-          </div>
-          <div
-            class="experience flex flex-col-reverse sm:flex-row flex-wrap justify-between items-start sm:items-center"
-          >
-            <div>
-              <a
-                href="https://aws.amazon.com"
-                target="_blank"
-                rel="noopener noreferrer"
-                class="hover:underline"
-              >
-                <h2 class="text-2xl font-semibold tracking-tight">
-                  Amazon Web Services
-                </h2>
-              </a>
-              <p class="text-gray-600">Software Development Engineer Intern</p>
-            </div>
-            <p class="text-gray-500 text-sm">Summer 2025</p>
-          </div>
-          <div
-            class="experience flex flex-col-reverse sm:flex-row flex-wrap justify-between items-start sm:items-center"
-          >
-            <div>
-              <a
-                href="https://devpost.com/software/prezpal-36079w"
-                target="_blank"
-                rel="noopener noreferrer"
-                class="hover:underline"
-              >
-                <h2 class="text-2xl font-semibold tracking-tight">PrezPal</h2>
-              </a>
-              <p class="text-gray-600">1st ConUHacks Winner</p>
-            </div>
-            <p class="text-gray-500 text-sm">February 2025</p>
-          </div>
-          <div
-            class="experience flex flex-col-reverse sm:flex-row flex-wrap justify-between items-start sm:items-center"
-          >
-            <div>
-              <a
-                href="https://www.fundica.com"
-                target="_blank"
-                rel="noopener noreferrer"
-                class="hover:underline"
-              >
-                <h2 class="text-2xl font-semibold tracking-tight">Fundica</h2>
-              </a>
-              <p class="text-gray-600">Full-Stack Development Intern</p>
-            </div>
-            <p class="text-gray-500 text-sm">Fall 2023 & Summer 2024</p>
-          </div>
+        <div class="flex flex-col">
+          <experience-item
+            title="Désolé Collective"
+            role="Freelance Designer & Full-Stack Developer"
+            date="Ongoing"
+            link="https://jesuisdesole.com"
+          ></experience-item>
+          <experience-item
+            title="Amazon Web Services"
+            role="Software Development Engineer Intern"
+            date="Summer 2025"
+            link="https://aws.amazon.com"
+          ></experience-item>
+          <experience-item
+            title="PrezPal"
+            role="1st Place ConUHacks Winner"
+            date="February 2025"
+            link="https://devpost.com/software/prezpal-36079w"
+          ></experience-item>
+          <experience-item
+            title="Fundica"
+            role="Full-Stack Development Intern"
+            date="Fall 2023 & Summer 2024"
+            link="https://www.fundica.com"
+          ></experience-item>
           <div class="flex justify-end">
             <button
               id="return-home"

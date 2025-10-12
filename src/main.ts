@@ -2,6 +2,7 @@ import animate from './animations'
 import startBubble from './bubble'
 import setupLinks from './links'
 import gsap from 'gsap'
+import './components/experience.component'
 
 // Global state
 class State {
@@ -78,7 +79,7 @@ export function openWorks(bubble: HTMLDivElement, scale: number) {
       '<'
     )
   tl.fromTo(
-    '.experience',
+    'experience-item',
     {
       y: 20,
       autoAlpha: 0,
