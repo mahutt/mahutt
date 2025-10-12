@@ -1,3 +1,4 @@
+import animate from './animations'
 import startGame from './game'
 
 // Creating links dynamically to avoid scraping by bots
@@ -42,4 +43,5 @@ if (linksContainer) {
   }
 }
 
+animate()
 startGame()
