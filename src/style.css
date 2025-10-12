@@ -4,18 +4,3 @@
   color: rgba(255, 255, 255, 0.87);
   background-color: #27272a;
 }
-
-@keyframes floatUp {
-  from {
-    transform: translateY(0);
-  }
-  to {
-    transform: translateY(calc(-100vh - 80px));
-  }
-}
-
-.float-animation {
-  position: fixed;
-  bottom: -5rem;
-  animation: floatUp 8s linear forwards;
-}

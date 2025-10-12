@@ -1,48 +1,98 @@
 import animate from './animations'
-import startGame from './game'
+import startBubble from './bubble'
+import setupLinks from './links'
+import gsap from 'gsap'
 
-// Creating links dynamically to avoid scraping by bots
-const LINKS = [
-  { url: 'mailto:tommy.mahut@gmail.com', icon: 'mail' },
-  { url: 'https://github.com/mahutt', icon: 'github' },
-  { url: 'http://linkedin.com/in/mahutt', icon: 'linkedin' },
-]
-
-const linksContainer = document.getElementById('links')
-if (linksContainer) {
-  for (const link of LINKS) {
-    const a = document.createElement('a')
-    a.href = link.url
-    a.target = '_blank'
-    a.rel = 'noopener'
-    a.classList.add('transition', 'duration-200', 'hover:scale-110')
-    a.onmouseenter = () => {
-      document.querySelectorAll('a').forEach((el) => {
-        el.classList.add('opacity-50')
-      })
-      a.classList.remove('opacity-50')
-    }
-    a.onmouseleave = () => {
-      document.querySelectorAll('a').forEach((el) => {
-        el.classList.remove('opacity-50')
-      })
-    }
-
-    const svg = document.createElementNS('http://www.w3.org/2000/svg', 'svg')
-    svg.setAttribute('class', 'h-8 w-8 fill-current')
-
-    const use = document.createElementNS('http://www.w3.org/2000/svg', 'use')
-    use.setAttributeNS(
-      'http://www.w3.org/1999/xlink',
-      'xlink:href',
-      `/icons.svg#${link.icon}`
-    )
-
-    svg.appendChild(use)
-    a.appendChild(svg)
-    linksContainer.appendChild(a)
+// Global state
+class State {
+  public workIsVisible: boolean
+  public workTimeline: gsap.core.Timeline | null
+  public bubbleTimeline: gsap.core.Timeline | null = null
+  constructor() {
+    this.workIsVisible = false
+    this.workTimeline = null
   }
 }
 
+export const state: State = new State()
+
+// Helper to create work animation timeline given bubble that is popped
+export function openWorks(bubble: HTMLDivElement, scale: number) {
+  console.log('openWorks')
+  let tl = gsap.timeline()
+  tl.fromTo(
+    bubble,
+    {
+      scale: 1,
+    },
+    {
+      scale: scale,
+      duration: 0.4,
+      ease: 'power1.out',
+    }
+  )
+    .fromTo(
+      '#work',
+      {
+        display: 'none',
+      },
+      {
+        display: 'block',
+        duration: 0,
+      }
+    )
+    .fromTo(
+      '#work-title span',
+      {
+        x: -20,
+        autoAlpha: 0,
+      },
+      {
+        x: 0,
+        autoAlpha: 1,
+        duration: 0.2,
+        stagger: 0.1,
+      }
+    )
+  tl.fromTo(
+    '.experience',
+    {
+      y: 20,
+      autoAlpha: 0,
+    },
+    {
+      y: 0,
+      autoAlpha: 1,
+      duration: 0.2,
+      stagger: 0.1,
+    },
+    '-=0.2'
+  ).fromTo(
+    '#return-home',
+    {
+      x: 20,
+      autoAlpha: 0,
+    },
+    {
+      x: 0,
+      autoAlpha: 1,
+      duration: 0.2,
+    }
+  )
+  state.workTimeline = tl
+  state.workIsVisible = true
+  state.bubbleTimeline?.pause()
+
+  document.getElementById('return-home')?.addEventListener('click', () => {
+    tl.reverse().eventCallback('onReverseComplete', () => {
+      state.workIsVisible = false
+      state.bubbleTimeline?.play()
+    })
+  })
+}
+
+// Creating links dynamically to avoid scraping by bots
+
+setupLinks()
 animate()
-startGame()
+state.bubbleTimeline = startBubble()
