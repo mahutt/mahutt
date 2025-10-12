@@ -114,8 +114,6 @@ export function openWorks(bubble: HTMLDivElement, scale: number) {
   })
 }
 
-// Creating links dynamically to avoid scraping by bots
-
 setupLinks()
 animate()
 state.bubbleTimeline = startBubble()

@@ -1,3 +1,5 @@
+// Creating links dynamically to avoid scraping by bots
+
 const LINKS = [
   { url: 'mailto:tommy.mahut@gmail.com', icon: 'mail' },
   { url: 'https://github.com/mahutt', icon: 'github' },
