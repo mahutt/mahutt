@@ -16,23 +16,29 @@ const posts = (await getCollection('blog')).sort(
 <html lang="en">
 	<head>
 		<BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
+        <style>
+            :root {
+                background-color: #e5e5e5; /* neutral-200 */
+                color: #262626; /* neutral-800 */
+            }
+        </style>
 	</head>
 	<body>
 		<Header />
-		<main class="max-w-4xl mx-auto">
+		<main class="max-w-4xl mx-auto px-6 my-6">
 			<section>
-				<ul class="flex flex-wrap gap-2">
+				<ul class="flex flex-wrap justify-around gap-6">
 					{
 						posts.map((post, index) => (
-							<li class={`${ index === 0 ? 'w-full mb-4 text-center' : "w-[calc(50%-1rem)]"}`}>
+							<li class={`${ index === 0 ? 'w-full mb-4 text-center' : "w-full sm:w-[calc(50%-1rem)]"}`}>
 								<a href={`/blog/${post.id}/`}>
 									{post.data.heroImage && (
 										<Image width={720} height={360} src={post.data.heroImage} alt="" class={`${ index === 0 ? 'w-full' : ""}`} />
 									)}
-									<h4 class="title">{post.data.title}</h4>
-									<p class="date">
+									<h4 class="mt-2 text-xl">{post.data.title}</h4>
+									<div class="text-neutral-500">
 										<FormattedDate date={post.data.pubDate} />
-									</p>
+									</div>
 								</a>
 							</li>
 						))
@@ -41,5 +47,9 @@ const posts = (await getCollection('blog')).sort(
 			</section>
 		</main>
 		<Footer />
+        <script>
+            import setupLinks from '../../scripts/links.ts';
+            setupLinks();
+        </script>
 	</body>
 </html>
