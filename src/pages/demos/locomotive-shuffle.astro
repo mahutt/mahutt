@@ -1,0 +1,73 @@
+---
+import BaseHead from '../../components/BaseHead.astro'
+import { SITE_DESCRIPTION, SITE_TITLE } from '../../consts'
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
+    <style>
+      body {
+        height: 100dvh;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+
+        font-size: 24px;
+      }
+    </style>
+  </head>
+  <body>
+    <a href="#"><span data-hover-shuffle>Locomotive</span>&reg;</a>
+    <script>
+      import gsap from 'gsap'
+
+      function shuffle(input: string): string {
+        const chars = input.split('')
+        for (let i = chars.length - 1; i > 0; i--) {
+          const j = Math.floor(Math.random() * (i + 1))
+          const tmp = chars[i]
+          chars[i] = chars[j]
+          chars[j] = tmp
+        }
+        return chars.join('')
+      }
+
+      let tl: gsap.core.Timeline | null = null
+
+      const target = document.querySelector(
+        '[data-hover-shuffle]'
+      ) as HTMLSpanElement
+
+      target.addEventListener('mouseenter', () => {
+        target.setAttribute('aria-label', target.innerText)
+        tl = gsap.timeline({
+          onComplete: () => {
+            target.innerText = target.getAttribute('aria-label') as string
+            target.removeAttribute('aria-label')
+          },
+        })
+
+        const duration = 0.25
+        const totalShuffles = 4
+        const timeBetweenShuffles = duration / totalShuffles
+
+        for (let i = 0; i < totalShuffles; i++) {
+          tl.add(() => {
+            target.innerText = shuffle(target.innerText)
+          }, timeBetweenShuffles * i)
+        }
+      })
+
+      target.addEventListener('mouseleave', () => {
+        tl && tl.kill()
+        if (target.getAttribute('aria-label')) {
+          target.innerText = target.getAttribute('aria-label') as string
+          target.removeAttribute('aria-label')
+        }
+      })
+    </script>
+  </body>
+</html>
