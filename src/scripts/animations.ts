@@ -6,11 +6,11 @@ export default function animate() {
     y: 0,
     autoAlpha: 1,
   })
-  tl.from(
+  tl.to(
     '#first-name',
     {
-      y: 20,
-      autoAlpha: 0,
+      y: 0,
+      autoAlpha: 1,
     },
     '-=0.2'
   )
