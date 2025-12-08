@@ -22,11 +22,11 @@ export default function animate() {
     },
     '-=0.2'
   )
-  tl.from(
+  tl.to(
     '#about',
     {
-      y: -20,
-      autoAlpha: 0,
+      y: 0,
+      autoAlpha: 1,
     },
     '-=0.2'
   )
