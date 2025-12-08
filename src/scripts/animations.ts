@@ -2,9 +2,9 @@ import gsap from 'gsap'
 
 export default function animate() {
   let tl = gsap.timeline()
-  tl.from('#last-name', {
-    y: 50,
-    autoAlpha: 0,
+  tl.to('#last-name', {
+    y: 0,
+    autoAlpha: 1,
   })
   tl.from(
     '#first-name',
