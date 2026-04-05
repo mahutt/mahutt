@@ -17,8 +17,8 @@ body {
   line-height: 1.7;
 }
 main {
-  width: 720px;
-  max-width: calc(100% - 2em);
+  width: 100%;
+  max-width: 720px;
   margin: auto;
   padding: 3em 1em;
 }
@@ -85,6 +85,7 @@ code {
 }
 pre {
   padding: 1.5em;
+  margin-bottom: 2em;
   border-radius: 8px;
 }
 pre > code {
@@ -104,8 +105,8 @@ blockquote {
   body {
     font-size: 18px;
   }
-  main {
-    padding: 1em;
+  h1 {
+    font-size: 2em;
   }
 }
 
