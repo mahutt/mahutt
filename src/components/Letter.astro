@@ -1,0 +1,16 @@
+---
+interface Props {
+  src: string
+  alt: string
+  end?: boolean
+}
+
+const { src, alt, end = false } = Astro.props
+---
+
+<img
+  src={src}
+  alt={alt}
+  class=`letter z-[3] flex-1 min-w-0 ${!end ? '-mr-8 sm:-mr-16' : ''}`
+  style="opacity: 0; transform: translate(0px, 50px);"
+/>

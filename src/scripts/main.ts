@@ -30,7 +30,7 @@ export function openWorks(bubble: HTMLDivElement, scale: number) {
       scale: scale,
       duration: 0.4,
       ease: 'power1.out',
-    }
+    },
   )
     .fromTo(
       ':root',
@@ -40,7 +40,7 @@ export function openWorks(bubble: HTMLDivElement, scale: number) {
       {
         backgroundColor: '#ffffff',
         duration: 0.2,
-      }
+      },
     )
     .fromTo(
       'body',
@@ -51,7 +51,7 @@ export function openWorks(bubble: HTMLDivElement, scale: number) {
         backgroundColor: '#ffffff',
         duration: 0.2,
       },
-      '<'
+      '<',
     )
     .fromTo(
       '#work',
@@ -62,7 +62,7 @@ export function openWorks(bubble: HTMLDivElement, scale: number) {
         display: 'block',
         duration: 0,
       },
-      '<'
+      '<',
     )
     .fromTo(
       '#work-title span',
@@ -76,7 +76,7 @@ export function openWorks(bubble: HTMLDivElement, scale: number) {
         duration: 0.2,
         stagger: 0.1,
       },
-      '<'
+      '<',
     )
   tl.fromTo(
     'experience-item',
@@ -90,7 +90,7 @@ export function openWorks(bubble: HTMLDivElement, scale: number) {
       duration: 0.2,
       stagger: 0.1,
     },
-    '-=0.2'
+    '-=0.2',
   ).fromTo(
     '#return-home',
     {
@@ -101,7 +101,7 @@ export function openWorks(bubble: HTMLDivElement, scale: number) {
       x: 0,
       autoAlpha: 1,
       duration: 0.2,
-    }
+    },
   )
   state.workTimeline = tl
   state.workIsVisible = true
@@ -114,6 +114,27 @@ export function openWorks(bubble: HTMLDivElement, scale: number) {
     })
   })
 }
+
+const letters = gsap.utils.toArray('#last-name .letter') as HTMLImageElement[]
+letters.forEach((letter) => {
+  // hover
+  letter.addEventListener('mouseenter', () => {
+    gsap.to(letter, { y: -8, duration: 0.3, ease: 'power2.out' })
+  })
+
+  letter.addEventListener('mouseleave', () => {
+    gsap.to(letter, { y: 0, duration: 0.3, ease: 'power2.out' })
+  })
+
+  // active
+  letter.addEventListener('mousedown', () => {
+    gsap.to(letter, { scale: 0.95, duration: 0.1, ease: 'power2.out' })
+  })
+
+  letter.addEventListener('mouseup', () => {
+    gsap.to(letter, { scale: 1, duration: 0.1, ease: 'power2.out' })
+  })
+})
 
 setupLinks()
 animate()

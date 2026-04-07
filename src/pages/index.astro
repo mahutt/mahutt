@@ -1,4 +1,5 @@
 ---
+import Letter from '../components/Letter.astro'
 import '../styles/global.css'
 ---
 
@@ -45,13 +46,14 @@ import '../styles/global.css'
         />
         <div id="links" class="flex flex-row gap-4"></div>
       </div>
-      <img
-        id="last-name"
-        class="name p-4 w-screen object-fill block"
-        style="opacity: 0; transform: translate(0px, 50px);"
-        src="mahut.svg"
-        alt="Mahut"
-      />
+      <div id="last-name" class="flex flex-row w-full">
+        <Letter src="name/m.svg" alt="m" />
+        <Letter src="name/a.svg" alt="m" />
+        <Letter src="name/h.svg" alt="m" />
+        <Letter src="name/u.svg" alt="m" />
+        <Letter src="name/t.svg" alt="m" />
+        <Letter src="name/t.svg" alt="m" end={true} />
+      </div>
     </div>
 
     <!-- START WORK -->
