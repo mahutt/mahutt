@@ -8,7 +8,7 @@ import '../../styles/global.css'
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Vinyl Spinner - mahutt</title>
+    <title>vinyl spinner</title>
     <style>
       body {
         margin: 0;
@@ -52,10 +52,7 @@ import '../../styles/global.css'
       canvas.height = 512
       const context = canvas.getContext('2d')
       if (context) {
-        const gradient = context.createLinearGradient(0, 0, 0, canvas.height)
-        gradient.addColorStop(0, '#87CEEB') // Light sky blue at top
-        gradient.addColorStop(1, '#B0E2FF') // Slightly darker blue at bottom
-        context.fillStyle = gradient
+        context.fillStyle = '#87CEEB'
         context.fillRect(0, 0, canvas.width, canvas.height)
         const texture = new THREE.CanvasTexture(canvas)
         scene.background = texture
@@ -65,7 +62,7 @@ import '../../styles/global.css'
         75,
         window.innerWidth / window.innerHeight,
         0.1,
-        1000
+        1000,
       )
 
       const renderer = new THREE.WebGLRenderer({ antialias: true })
@@ -115,7 +112,7 @@ import '../../styles/global.css'
       // Setup DRACOLoader
       const dracoLoader = new DRACOLoader()
       dracoLoader.setDecoderPath(
-        'https://www.gstatic.com/draco/versioned/decoders/1.5.6/'
+        'https://www.gstatic.com/draco/versioned/decoders/1.5.6/',
       )
 
       // Loading .glb model
@@ -168,7 +165,7 @@ import '../../styles/global.css'
         undefined,
         function (error) {
           console.error('Error loading model:', error)
-        }
+        },
       )
 
       // Animation loop
